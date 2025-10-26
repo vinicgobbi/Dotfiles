@@ -1,219 +1,156 @@
 /*
  ********************************************
- *░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░*
- *░░█▀█░█░░░█░█░█▀▀░░░█░█░█░░░▀█▀░█▀▄░█▀█░░*
- *░░█▀▀░█░░░█░█░▀▀█░░░█░█░█░░░░█░░█▀▄░█▀█░░*
- *░░▀░░░▀▀▀░▀▀▀░▀▀▀░░░▀▀▀░▀▀▀░░▀░░▀░▀░▀░▀░░*
- *░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░*
+ * Waybar CSS para Adwaita Sans + libadwaita *
  ********************************************
  */
 
+/* ----- Variáveis de Cor (Libadwaita Dark) ----- */
+@define-color window_bg_color #242424; /* Fundo principal */
+@define-color window_fg_color #ffffff; /* Texto principal (branco) */
+@define-color view_bg_color   #303030; /* Fundo de "conteúdo" (ex: módulo de workspaces) */
+@define-color inactive_fg_color #dedede;/* Cor de texto inativo/secundário */
+
+/* * Acento Azul (Padrão Libadwaita)
+ * Como seu tema de ícones no Sway é "Yaru-magenta-dark",
+ * você pode trocar o azul por roxo comentando as linhas abaixo
+ * e descomentando as linhas do "Acento Magenta".
+ */
+@define-color accent_bg_color #3584e4; /* @accent_bg_color (Azul) */
+@define-color accent_fg_color #78aeed; /* @accent_fg_color (Azul claro - para texto/ícones SEM fundo) */
+
+/* Acento Magenta (para combinar com Yaru-magenta-dark) */
+/*
+@define-color accent_bg_color #9141ac;
+@define-color accent_fg_color #ab6bc6;
+*/
+
+/* Cores de Alerta/Erro */
+@define-color error_bg_color  #c01c28; /* @error_bg_color (Vermelho) */
+@define-color error_fg_color  #ff7b63; /* @error_fg_color (Vermelho claro) */
+
+
+/* ----- Configuração Geral ----- */
 * {
-	border: none;
-	border-radius: 0;
-	font-family:Hack Nerd Font;
-	font-size: 14px;
-	min-height: 12px;
+    border: none;
+    border-radius: 0;
+    font-family: "Adwaita Sans";
+    font-weight: 400; /* Regular */
+    font-size: 14px;
+    min-height: 12px;
 }
 
 window#waybar {
-	background: transparent;
+    background: transparent;
 }
 
 window#waybar.hidden {
-	opacity: 0.2;
+    opacity: 0.2;
 }
 
 #window {
     margin-top: 8px;
     padding-left: 16px;
     padding-right: 16px;
-	border-radius: 26px;
-	transition: none;
+    border-radius: 26px;
+    transition: none;
     color: transparent;
-	background: transparent;
+    background: transparent;
 }
 
+/* ---------------------- Workspaces ---------------------- */
 #workspaces {
-	margin-top: 8px;
-	margin-left: 12px;
-	margin-bottom: 0;
-	border-radius: 26px;
-	background: #282a36;
-	transition: none;
+    margin-top: 8px;
+    margin-left: 12px;
+    margin-bottom: 0;
+    border-radius: 26px;
+    background: @view_bg_color;
+    transition: none;
 }
 
 #workspaces button {
-	transition: none;
-	color: #f8f8f2;
-	background: transparent;
-	font-size: 16px;
-}
-
-#workspaces button.focused {
-	color: #9aedfe;
+    transition: none;
+    color: @inactive_fg_color; /* Cor para workspaces inativos */
+    background: transparent;
+    font-size: 16px;
+    padding-left: 6px;
+    padding-right: 6px;
 }
 
 #workspaces button:hover {
-	transition: none;
-	box-shadow: inherit;
-	text-shadow: inherit;
-	color: #ff79c6;
+    color: @accent_fg_color; /* Cor do texto ao passar o mouse */
 }
 
-#battery{
-	margin-top: 8px;
-	margin-left: 8px;
-	padding-left: 16px;
-	padding-right: 16px;
-	margin-bottom: 0;
-	background: #282a36;
-	border-radius: 26px;
-	color: #f8f8f2;
+#workspaces button.focused {
+    color: @window_fg_color; /* Texto branco */
+    background: @accent_bg_color; /* Fundo azul/magenta */
+    border-radius: 12px;
 }
 
-#backlight{
-	margin-top: 8px;
-	margin-left: 8px;
-	padding-left: 16px;
-	padding-right: 16px;
-	margin-bottom: 0;
-	background: #282a36;
-	border-radius: 26px;
+/* --- NOVO: Regra para Alerta/Urgente --- */
+#workspaces button.urgent {
+    color: @window_fg_color; /* Texto branco */
+    background-color: @error_bg_color; /* Fundo vermelho */
+    border-radius: 12px;
 }
 
-#tray{
-	margin-top: 8px;
-	margin-left: 8px;
-	padding-left: 16px;
-	padding-right: 16px;
-	margin-bottom: 0px;
+/* ---------------------- Módulos Padrão ---------------------- */
+#battery,
+#backlight,
+#pulseaudio,
+#clock,
+#custom-waybar-mpris,
+#custom-media,
+#custom-vpn,
+#keyboard-state,
+#custom-power {
+    margin-top: 8px;
+    margin-left: 8px;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin-bottom: 0;
+    border-radius: 26px;
+    background: @window_bg_color;
+    color: @window_fg_color;
+    transition: none;
+}
+
+#custom-power {
 	margin-right: 12px;
-	background: #282a36;
-	border-radius: 26px;
- }
-
-#custom-waybar-mpris {
-	margin-top: 8px;
-	margin-left: 8px;
-	padding-left: 16px;
-	padding-right: 16px;
-	margin-bottom: 0px;
-	border-radius: 26px;
-	background: #282a36;
-	transition: none;
-	color: #4d4d4d;
-	background: #5af78e;
 }
 
-#custom-media {
-	margin-top: 8px;
-	margin-left: 8px;
-	padding-left: 16px;
-	padding-right: 16px;
-	margin-bottom: 0px;
-	border-radius: 26px;
+/* ---------------------- Tray ---------------------- */
+#tray {
+    margin-top: 8px;
+    margin-left: 8px;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin-bottom: 0px;
+    background: @window_bg_color;
+    border-radius: 26px;
+    color: @window_fg_color;
 }
 
-#custom-media.custom-mediaplayer-spotify {
-	background: #282a36;
-	transition: none;
-	color: #f8f8f2;
+/* ---------------------- Módulos com Destaque ---------------------- */
+#language,
+#available {
+    margin-top: 8px;
+    margin-left: 8px;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin-bottom: 0;
+    border-radius: 26px;
+    transition: none;
+    background: @accent_bg_color;
+    color: @window_fg_color; /* Corrigido: Texto branco para melhor contraste */
 }
 
 
-#custom-media.custom-mediaplayer-psst {
-	background: #282a36;
-	transition: none;
-	color: #f8f8f2;
-}
-
-#custom-media.custom-mediaplayer-firefox {
-	background: #282a36;
-	transition: none;
-	color: #f8f8f2;
-}
-
-#custom-media.custom-mediaplayer-cmus {
-	background: #282a36;
-	transition: none;
-	color: #f8f8f2;
-}
-
+/* ---------------------- Media Player (Sobrescrita) ---------------------- */
+#custom-media.custom-mediaplayer-spotify,
+#custom-media.custom-mediaplayer-psst,
+#custom-media.custom-mediaplayer-firefox,
+#custom-media.custom-mediaplayer-cmus,
 #custom-media.custom-mediaplayer-chromium {
-	background: #282a36;
-	transition: none;
-	color: #f8f8f2;
-}
-
-#language {
-	margin-top: 8px;
-	margin-left: 8px;
-	padding-left: 16px;
-	padding-right: 16px;
-	margin-bottom: 0;
-	border-radius: 26px;
-	transition: none;
-	color: #4d4d4d;
-	background: #bd93f9;
-}
-
-#pulseaudio {
-	margin-top: 8px;
-	margin-left: 8px;
-	padding-left: 16px;
-	padding-right: 16px;
-	margin-bottom: 0px;
-	border-radius: 26px;
-	transition: none;
-	color: #f8f8f2;
-	background: #282a36;
-}
-
-#available {
-	margin-top: 8px;
-	margin-left: 8px;
-	padding-left: 16px;
-	padding-right: 16px;
-	margin-bottom: 0;
-	border-radius: 26px;
-	transition: none;
-	color: #4d4d4d;
-	background: #5af78e;
-}
-
-#available {
-	margin-top: 8px;
-	margin-left: 8px;
-	padding-left: 16px;
-	padding-right: 16px;
-	margin-bottom: 0;
-	border-radius: 26px;
-	transition: none;
-	color: #4d4d4d;
-	background: #f1fa8c;
-}
-
-#available {
-	margin-top: 8px;
-	margin-left: 8px;
-	padding-left: 16px;
-	padding-right: 16px;
-	margin-bottom: 0;
-	border-radius: 26px;
-	transition: none;
-	color: #4d4d4d;
-	background: #ff6e67;
-}
-
-#clock {
-	margin-top: 8px;
-	margin-left: 8px;
-	padding-left: 16px;
-	padding-right: 16px;
-	margin-bottom: 0;
-	border-radius: 26px;
-	transition: none;
-	color: #f8f8f2;
-	background: #282a36;
+    background: @window_bg_color;
+    color: @window_fg_color;
 }

@@ -1,0 +1,81 @@
+# ==================================
+# Config do Swaylock - Libadwaita Dark
+# ==================================
+
+# --- Efeitos e Comportamento (Mantidos) ---
+daemonize
+show-failed-attempts
+clock
+screenshot
+effect-blur=13x13
+effect-vignette=0.5:0.5
+indicator
+indicator-radius=200
+indicator-thickness=20
+grace=2
+grace-no-mouse
+grace-no-touch
+datestr=%a, %B %e
+timestr=%H:%M
+fade-in=0.4
+ignore-empty-password
+
+# --- Fonte (Coerência com Adwaita) ---
+font="Adwaita Sans"
+
+# --- Cor de Fundo (Fallback) ---
+# @window_bg_color
+color=242424
+
+# --- Cores do Indicador (Padrão) ---
+# @window_bg_color
+line-color=242424
+# @accent_bg_color (azul)
+ring-color=3584e4
+# @view_bg_color (cinza interno)
+inside-color=303030
+
+# --- Cores do Texto (Padrão) ---
+# @window_fg_color (branco)
+text-color=ffffff
+# @warning_fg_color (amarelo)
+text-caps-lock-color=f8e45c
+
+# --- Destaque de Tecla ---
+# @success_fg_color (verde claro)
+key-hl-color=8ff0a4
+
+# --- Separador ---
+separator-color=00000000
+
+# --- Cores de Verificação (Digitando) ---
+# @accent_bg_color (azul)
+line-ver-color=3584e4
+# @accent_bg_color (azul)
+ring-ver-color=3584e4
+# @view_bg_color (cinza interno)
+inside-ver-color=303030
+# @accent_fg_color (azul claro)
+text-ver-color=78aeed
+
+# --- Cores de Erro (Senha Errada) ---
+# @error_bg_color (vermelho)
+line-wrong-color=c01c28
+# @error_bg_color (vermelho)
+ring-wrong-color=c01c28
+# @view_bg_color (cinza interno)
+inside-wrong-color=303030
+# @error_fg_color (vermelho claro)
+text-wrong-color=ff7b63
+
+# --- Cores de Limpeza (Backspace) ---
+# @accent_fg_color (azul claro)
+line-clear-color=78aeed
+# @accent_fg_color (azul claro)
+ring-clear-color=78aeed
+# @view_bg_color (cinza interno)
+inside-clear-color=303030
+# @accent_fg_color (azul claro)
+text-clear-color=78aeed
+# @accent_fg_color (azul claro)
+bs-hl-color=78aeed

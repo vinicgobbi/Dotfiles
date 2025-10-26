@@ -1,15 +1,15 @@
 # Minhas configurações atuais:
+
 - OS: Arch Linux
 - WM : Sway
 - Barra de estado: Waybar
-- Navegador: Google Chrome
+- Navegador: Firefox
 - Emulador de terminal: alacritty
-- Music player: cmus
+- Music player: Spotify
 - Video player: MPV
+- Laucher de Apps: Fuzzel
 
 ----------------------------------------
 Fotos:
 
-![](./print.png)
-
-------------------------------------------
+![Captura da tela](./print.png)

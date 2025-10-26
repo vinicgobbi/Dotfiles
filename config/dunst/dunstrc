@@ -1,5 +1,8 @@
 # User: Franklin Souza
 # Telegram: FranklinTech
+# 
+# Configuração do Dunst com tema Libadwaita Dark
+#
 
 [global]
     ### Display ###
@@ -46,6 +49,8 @@
     # The transparency of the window.  Range: [0; 100].
     # This option will only work if a compositing window manager is
     # present (e.g. xcompmgr, compiz, etc.).
+    # (Opcional: Libadwaita puro não é transparente, 
+    # mas 10 é sutil e aceitável)
     transparency = 10
 
     # The height of the entire notification.  If the height is smaller
@@ -146,7 +151,10 @@
     #   <u>underline</u>
     #
     
-    format = "<span foreground='#bd93f9' font='Hack Nerd Font 9'>%s</span>\n<span foreground='#FFFFFF' font='Hack Nerd Font 9'>%b</span>"
+    # --- Cores do Libadwaita Dark aplicadas ao formato ---
+    # Sumário (%s): Azul claro de acento (@accent_fg_color)
+    # Corpo (%b)  : Branco (@window_fg_color)
+    format = "<span foreground='#78aeed' font='Hack Nerd Font 9'>%s</span>\n<span foreground='#ffffff' font='Hack Nerd Font 9'>%b</span>"
 
     # Alignment of message text.
     # Possible values are "left", "center" and "right".
@@ -234,14 +242,16 @@
     # corners.
     # The radius will be automatically lowered if it exceeds half of the
     # notification height to avoid clipping text and/or icons.
-    corner_radius = 5
+    
+    # --- Aumentado para combinar com o visual Adwaita ---
+    corner_radius = 12
 
     ### Legacy
 
     # Use the Xinerama extension instead of RandR for multi-monitor support.
     # This setting is provided for compatibility with older nVidia drivers that
     # do not support RandR and using it on systems that support RandR is highly
-    # discouraged.
+    * discouraged.
     #
     # By enabling this setting dunst will not be able to detect when a monitor
     # is connected or disconnected which might break follow mode if the screen
@@ -295,26 +305,31 @@
     #context = ctrl+shift+period
 
 
-# IMPORTANT: colors have to be defined in quotation marks.
-# Otherwise the "#" and following would be interpreted as a comment.
-# frame_color = "coco"
-# frame_color = "#000000"
-# separator_color = "#1c1c1c""
+# ==================================
+# Seções de cores - Libadwaita Dark
+# ==================================
+#
+# Fundo: @view_bg_color (#303030)
+#
+# Borda (Low):    @success_bg_color (#26a269)
+# Borda (Normal): @accent_bg_color  (#3584e4)
+# Borda (Crit):   @error_bg_color   (#c01c28)
+#
 
 [base16_low]
     msg_urgency = low
-    frame_color = "#bd93f9"
-    background = "#282a36"
-    #foreground = "#FFFFFF"
+    frame_color = "#26a269"
+    background = "#303030"
+    # foreground é controlado pelo 'format' global
 
 [base16_normal]
     msg_urgency = normal
-    frame_color = "#bd93f9"
-    background = "#282a36"
-    #foreground = "#FFFFFF"
+    frame_color = "#3584e4"
+    background = "#303030"
+    # foreground é controlado pelo 'format' global
 
 [base16_critical]
     msg_urgency = critical
-    frame_color = "#bd93f9"
-    background = "#282a36"
-    #foreground = "#FFFFFF"
+    frame_color = "#c01c28"
+    background = "#303030"
+    # foreground é controlado pelo 'format' global

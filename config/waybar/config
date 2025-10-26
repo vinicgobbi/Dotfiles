@@ -1,86 +1,102 @@
 {
 	"layer": "bottom",
-	"modules-left": ["sway/workspaces", "sway/mode"],
-	"modules-center": ["custom/media"],
-	"modules-right": ["pulseaudio", "backlight" ,"battery", "clock", "tray"],
-	
+	"modules-left": [
+		"sway/workspaces",
+		"sway/mode",
+		"custom/vpn"
+	],
+	"modules-center": [
+		"custom/media"
+	],
+	"modules-right": [
+		"keyboard-state",
+		"pulseaudio",
+		"backlight",
+		"battery",
+		"clock",
+		"tray",
+		"custom/power"
+	],
 	"pulseaudio": {
-		"tooltip": false,
-		"scroll-step": 5,
 		"format": "{icon} {volume}%",
-		"format-muted": "奄 ",
+		"on-click": "pavucontrol",
+		"format-muted": "🔇 {volume}%",
 		"format-icons": {
-			"default": ["奔", "墳"]
+			"default": "🔊"
 		}
 	},
-
 	"battery": {
-        "bat": "BAT1",
-        "states": {
-              "full": 99,
-              "good": 98,
-              "normal": 98,
-              "warning": 20,
-              "critical": 20
-},
-
-        "format": "{icon} {capacity}%",
-        "format-good": "{icon} {capacity}%", 
-        "format-full": " {capacity}%",
-        "format-icons": ["", "", "", "", ""],
-        "interval": 30
-},
-
-	"sway/language": {
-		"tooltip": false,
-		"format": "{flag} {}"
+		"format": "🔋 {capacity}%",
+		"format-icons": {
+			"default": "🔋"
+		}
 	},
-
+	"backlight": {
+		"format": "💡 {percent}%",
+		"format-icons": {
+			"default": "💡"
+		}
+	},
 	"clock": {
-		"tooltip": false,
-		"format": "{:%R}",
-		"format-alt": "{:%R - %A - %d/%m/%y}"
+		"format": "🕒 {:%R}",
+		"format-alt": "📅 {:%R - %A - %d/%m/%y}",
+		"tooltip": true,
+		"tooltip-format": "{:%R - %A - %d/%m/%y}"
 	},
-
-	"tray": {
-        "icon-size": 18,
-        "spacing": 15
-	},
-
-	"custom/pipewire": {
-	    "format": "{icon} {percentage}%",
-	    "return-type": "json",
-	    "signal": 8,
-	    "interval": "once",
-	    "format-icons": {
-	        "mute": "",
-	        "default": ["", "", "", ""]
-	    },
-	    "exec": "pw-volume status"
-	},
-
 	"custom/media": {
-		"format": "{icon} {}",
+		"format": "{icon} {text}",
 		"return-type": "json",
 		"max-length": 50,
 		"format-icons": {
-			"chromium": "",
-			"spotify": "",
-			"cmus": "🎜",
-			"psst": "",
-			"firefox": "",
-			"paused": "",
-			"default": "🎜"
+			"spotify": "🎵",
+			"cmus": "🎵",
+			"firefox": "🌐",
+			"chromium": "🌐",
+			"paused": "⏸️",
+			"default": "▶️"
 		},
-		"escape": true,
 		"exec": "/home/vinicius/.config/waybar/mediaplayer.py 2> /dev/null"
 	},
-
-	"backlight": {
-		"device": "intel_backlight",
-		"format": "{percent}% {icon}",
-		"on-scroll-up": "brightnessctl s 5%+",
-		"on-scroll-down": "brightnessctl s 5%-",
-		"format-icons": ["", ""]
+	"sway/workspaces": {
+		"format": "{icon} {name}",
+		"format-icons": {
+			"focused": "◉",
+			"default": "○"
+		}
+	},
+	"tray": {
+		"icon-size": 18,
+		"spacing": 15
+	},
+	"custom/vpn": {
+		"exec": "/home/vinicius/.config/waybar/vpn_toggle.py",
+		"return-type": "json",
+		"format": "{icon} {text}",
+		"on-click": "/home/vinicius/.config/waybar/vpn_toggle.py --toggle",
+		"format-icons": {
+			"active": "🛡️🟢",
+			"inactive": "🛡️🔴",
+			"default": "❔"
+		}
+	},
+	"custom/power": {
+		"exec": "/home/vinicius/.config/waybar/power_menu.py",
+		"return-type": "json",
+		"format": "{icon}",
+		"on-click": "/home/vinicius/.config/waybar/power_menu.py --show-menu",
+		"format-icons": {
+			"default": "🔌"
+		}
+	},
+	"keyboard-state": {
+		"numlock": true,
+		"capslock": true,
+		"format": "{name} {icon}",
+		"format-icons": {
+			"locked": "🔒",
+			"unlocked": "🔓"
+		},
+		"tooltip": true,
+		"tooltip-format": "{name}: {state}"
 	}
 }
