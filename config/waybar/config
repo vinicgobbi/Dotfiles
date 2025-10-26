@@ -55,7 +55,7 @@
 			"paused": "⏸️",
 			"default": "▶️"
 		},
-		"exec": "/home/vinicius/.config/waybar/mediaplayer.py 2> /dev/null"
+		"exec": "/home/vinicius/.config/waybar/scripts/mediaplayer.py 2> /dev/null"
 	},
 	"sway/workspaces": {
 		"format": "{icon} {name}",
@@ -69,10 +69,10 @@
 		"spacing": 15
 	},
 	"custom/vpn": {
-		"exec": "/home/vinicius/.config/waybar/vpn_toggle.py",
+		"exec": "/home/vinicius/.config/waybar/scripts/vpn_toggle.py",
 		"return-type": "json",
 		"format": "{icon} {text}",
-		"on-click": "/home/vinicius/.config/waybar/vpn_toggle.py --toggle",
+		"on-click": "/home/vinicius/.config/waybar/scripts/vpn_toggle.py --toggle",
 		"format-icons": {
 			"active": "🛡️🟢",
 			"inactive": "🛡️🔴",
@@ -80,10 +80,9 @@
 		}
 	},
 	"custom/power": {
-		"exec": "/home/vinicius/.config/waybar/power_menu.py",
 		"return-type": "json",
 		"format": "{icon}",
-		"on-click": "/home/vinicius/.config/waybar/power_menu.py --show-menu",
+		"on-click": "wlogout",
 		"format-icons": {
 			"default": "🔌"
 		}
