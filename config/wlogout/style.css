@@ -1,0 +1,72 @@
+* {
+    background-image: none;
+    box-shadow: none;
+}
+
+window {
+    /* Fundo @window_bg_color (#242424) com 90% de opacidade */
+    background-color: rgba(36, 36, 36, 0.9);
+}
+
+button {
+    /* Fundo @view_bg_color (#303030) */
+    background-color: #303030;
+    
+    
+    /* Estilo Libadwaita */
+    border: none;
+    border-radius: 24px;
+    outline-style: none;
+    margin: 10px;
+
+    /* Config dos ícones */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 40%;
+}
+
+/* --- Ações Seguras (Acento Azul) --- */
+#lock:focus, #lock:active, #lock:hover,
+#suspend:focus, #suspend:active, #suspend:hover,
+#hibernate:focus, #hibernate:active, #hibernate:hover {
+    background-color: #3584e4; /* @accent_bg_color */
+}
+
+/* --- Ação de Aviso (Amarelo) --- */
+#logout:focus, #logout:active, #logout:hover {
+    background-color: #ae7b03; /* @warning_bg_color */
+}
+
+/* --- Ações Destrutivas (Vermelho) --- */
+#shutdown:focus, #shutdown:active, #shutdown:hover,
+#reboot:focus, #reboot:active, #reboot:hover {
+    background-color: #c01c28; /* @error_bg_color */
+}
+
+
+/* --- Definições dos Ícones ---
+ * (Presume que estão em ~/.config/wlogout/assets/)
+ */
+#lock {
+    background-image: image(url("assets/lock.svg"));
+}
+
+#logout {
+    background-image: image(url("assets/logout.svg"));
+}
+
+#suspend {
+    background-image: image(url("assets/suspend.svg"));
+}
+
+#hibernate {
+    background-image: image(url("assets/hibernate.svg"));
+}
+
+#shutdown {
+    background-image: image(url("assets/shutdown.svg"));
+}
+
+#reboot {
+    background-image: image(url("assets/reboot.svg"));
+}
