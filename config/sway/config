@@ -56,7 +56,7 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 bindsym $mod+f fullscreen
 bindsym $mod+Shift+r reload
-bindsym $mod+Shift+e exec swaynag -t warning -m 'Você realmente quer sair do Sway?' -B 'Sim, sair do Sway' 'swaymsg exit'
+bindsym $mod+Shift+e exec wlogout
 
 bindsym $mod+l exec $lock # <-- ADICIONADO: Atalho para bloquear a tela (Mod+L)
 
@@ -137,6 +137,9 @@ default_border pixel 1
 default_floating_border pixel 1
 gaps inner 10
 gaps outer 3
+
+# Forçar janelas YAD (diálogos de confirmação) a flutuarem
+for_window [app_id="yad"] floating enable
 
 # Cores baseadas no Libadwaita Dark (acento azul padrão @accent_bg_color)
 #
