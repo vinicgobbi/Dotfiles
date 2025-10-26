@@ -94,7 +94,7 @@
 		"format": "{name} {icon}",
 		"format-icons": {
 			"locked": "🔒",
-			"unlocked": "🔓"
+			"unlocked": "🔑"
 		},
 		"tooltip": true,
 		"tooltip-format": "{name}: {state}"
