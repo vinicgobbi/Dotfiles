@@ -101,6 +101,9 @@ window#waybar.hidden {
 #custom-waybar-mpris,
 #custom-media,
 #custom-vpn,
+#network,
+#bluetooth,
+#power-profiles-daemon,
 #keyboard-state,
 #custom-power {
     margin-top: 8px;

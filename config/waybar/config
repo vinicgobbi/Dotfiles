@@ -3,6 +3,8 @@
 	"modules-left": [
 		"sway/workspaces",
 		"sway/mode",
+		"network",
+		"bluetooth",
 		"custom/vpn"
 	],
 	"modules-center": [
@@ -13,13 +15,15 @@
 		"pulseaudio",
 		"backlight",
 		"battery",
+		"power-profiles-daemon",
 		"clock",
 		"tray",
 		"custom/power"
 	],
 	"pulseaudio": {
 		"format": "{icon} {volume}%",
-		"on-click": "pavucontrol",
+		"on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+		"on-click-right": "pavucontrol",
 		"format-muted": "🔇 {volume}%",
 		"format-icons": {
 			"default": "🔊"
@@ -47,6 +51,7 @@
 		"format": "{icon} {text}",
 		"return-type": "json",
 		"max-length": 50,
+		"escape": true,
 		"format-icons": {
 			"spotify": "🎵",
 			"cmus": "🎵",
@@ -97,5 +102,33 @@
 		},
 		"tooltip": true,
 		"tooltip-format": "{name}: {state}"
+	},
+	"network": {
+		"format-wifi": "📡 {essid}",
+		"tooltip-format": "{ifname} via {gwaddr} ⦙ IP: {ipaddr}/{cidr}",
+		"format-ethernet": "🌐 {ifname}",
+		"format-disconnected": "❌ Disconnected",
+		"on-click": "nm-connection-editor"
+	},
+	"bluetooth": {
+		"format": "🔗 {status}",
+		"format-connected": "🎧 {device_alias}",
+		"format-connected-battery": "🎧 {device_alias} ({device_battery}%)",
+		"format-disabled": "🚫 Off",
+		"format-off": "🚫 Off",
+		"format-on": "🔗 On",
+		"tooltip-format": "{controller_alias}\n{controller_address}\nStatus: {status}",
+		"on-click": "blueman-manager",
+		"on-click-right": "rfkill toggle bluetooth"
+	},
+	"power-profiles-daemon": {
+		"format": "{icon} {profile}",
+		"format-icons": {
+			"performance": "🚀",
+			"balanced": "⚙️",
+			"power-saver": "🪫"
+		},
+		"tooltip-format": "Modo atual: {profile}\nDriver: {driver}",
+		"on-click": "~/.config/waybar/scripts/power-toggle.sh"
 	}
 }

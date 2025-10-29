@@ -11,8 +11,8 @@ set $down j
 set $up k
 set $right l
 set $term alacritty
-set $menu fuzzel --icon-theme Yaru-blue-dark # Launcher de apps
-set $lock swaylock # <-- ADICIONADO: Variável para o lockscreen
+set $menu fuzzel --icon-theme Yaru-blue-dark
+set $lock swaylock
 set $printscreen flameshot gui
 
 font pango:Adwaita Sans 10 
@@ -24,6 +24,28 @@ output * bg /home/vinicius/Imagens/Wallpapers/jinx-arcane-season-2-4k.jpg fill
 input * xkb_layout "br"
 input * xkb_variant "abnt2"
 
+# Tela do notebook (interna)
+output eDP-1 {
+    position 0,0
+    scale 1.0
+}
+
+# Monitor externo (HDMI)
+output HDMI-A-1 {
+    position 1920,0
+    scale 1.0
+}
+
+### --------------------------------------
+### Configuração do touchpad
+### --------------------------------------
+
+input "1739:52545:SYNA7DB5:00_06CB:CD41_Touchpad" {
+    tap enabled                  # Ativa toque para clique
+    click_method clickfinger      # 1 dedo = esquerdo, 2 dedos = direito, 3 dedos = meio
+    natural_scroll enabled        # Rolar “natural” (inverte a direção)
+}
+
 ### --------------------------------------
 ### Controle de Volume e Mídia
 ### --------------------------------------
@@ -32,9 +54,6 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
-bindsym $mod+Right exec playerctl next
-bindsym $mod+Left exec playerctl previous
-bindsym $mod+Up exec playerctl play-pause
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
@@ -58,7 +77,8 @@ bindsym $mod+f fullscreen
 bindsym $mod+Shift+r reload
 bindsym $mod+Shift+e exec wlogout
 
-bindsym $mod+l exec $lock # <-- ADICIONADO: Atalho para bloquear a tela (Mod+L)
+bindsym $mod+l exec $lock
+bindsym XF86PowerOff exec wlogout
 
 ### --------------------------------------
 ### Workspaces
@@ -140,6 +160,7 @@ gaps outer 3
 
 # Forçar janelas YAD (diálogos de confirmação) a flutuarem
 for_window [app_id="yad"] floating enable
+for_window [app_id="nm-connection-editor"] floating enable
 
 # Cores baseadas no Libadwaita Dark (acento azul padrão @accent_bg_color)
 #

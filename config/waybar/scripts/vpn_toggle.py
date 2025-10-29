@@ -8,12 +8,16 @@ import argparse
 vpn_name = "FAESA"
 
 def get_vpn_active():
-    """Retorna True se a VPN estiver ativa"""
+    """Retorna True se a VPN especificada estiver ativa"""
     result = subprocess.run(
-        ["nmcli", "-t", "-f", "NAME,STATE", "connection", "show", "--active"],
+        ["nmcli", "-t", "-f", "NAME,TYPE,STATE", "connection", "show", "--active"],
         capture_output=True, text=True
     )
-    return vpn_name in result.stdout
+    for line in result.stdout.strip().splitlines():
+        name, type_, *_ = line.split(":")
+        if name == vpn_name and type_ == "vpn":
+            return True
+    return False
 
 def notify(state):
     """Dispara notificação quando VPN conecta/desconecta"""
