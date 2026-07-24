@@ -12,3 +12,4 @@ if command -v eza &> /dev/null; then
 fi
 
 alias cls="clear"
+alias vencord='sh -c "$(curl -sS https://vencord.dev/install.sh)"'

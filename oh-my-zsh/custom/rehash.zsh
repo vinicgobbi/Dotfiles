@@ -1,0 +1,1 @@
+zstyle ':completion:*' rehash true
