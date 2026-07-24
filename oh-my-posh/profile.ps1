@@ -19,13 +19,32 @@ if (Get-Command ffplay -ErrorAction SilentlyContinue) {
     $global:FaahMp3 = Join-Path $ohMyPoshRoot "faaah.mp3"
     $script:OmpPrompt = $function:prompt
 
+    $global:FaahLastHistoryId = (Get-History -ErrorAction Ignore -Count 1 | Select-Object -ExpandProperty Id)
+
     function global:prompt {
         # $? precisa ser a primeiríssima coisa lida na função: qualquer statement
-        # antes disso (mesmo uma atribuição) já o sobrescreve com "sucesso".
-        # $LASTEXITCODE sozinho não serve aqui: só reflete o código de saída de
-        # executáveis nativos, então um comando inexistente (erro do próprio
-        # PowerShell) nunca o altera. $? cobre os dois casos, como o $? do zsh.
-        $global:FaahLastCommandFailed = -not $?
+        # antes disso já a sobrescreve. Cobre tanto comando inexistente quanto
+        # executável nativo com código de saída != 0 — não precisa de $LASTEXITCODE:
+        # ele é "grudento" (só muda quando outro executável nativo roda), então usá-lo
+        # como sinal independente falsamente marcaria como erro qualquer comando
+        # bem-sucedido rodado logo depois de uma falha nativa anterior.
+        $success = $?
+
+        # $? sozinho ainda é um falso positivo em potencial: o próprio oh-my-posh roda
+        # comandos internos (git, ruby etc.) DURANTE a renderização do prompt, e se
+        # o usuário só der Enter numa linha vazia, "prompt" é chamado de novo sem
+        # nenhum comando novo ter rodado — nesse caso $? pode refletir ruído interno
+        # da renderização anterior, não um comando real. Por isso só reavaliamos
+        # sucesso/falha quando o Id do histórico realmente mudou desde a última vez
+        # que "prompt" rodou, ou seja, quando um comando novo de fato foi executado.
+        $lastHistoryId = Get-History -ErrorAction Ignore -Count 1 | Select-Object -ExpandProperty Id
+        if ($lastHistoryId -ne $global:FaahLastHistoryId) {
+            $global:FaahLastHistoryId = $lastHistoryId
+            $global:FaahLastCommandFailed = -not $success
+        } else {
+            $global:FaahLastCommandFailed = $false
+        }
+
         if ($global:FaahLastCommandFailed) {
             Start-Process ffplay -ArgumentList "-nodisp -autoexit -loglevel quiet `"$global:FaahMp3`"" -WindowStyle Hidden
         }
