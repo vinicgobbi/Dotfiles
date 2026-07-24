@@ -20,7 +20,13 @@ if (Get-Command ffplay -ErrorAction SilentlyContinue) {
     $script:OmpPrompt = $function:prompt
 
     function global:prompt {
-        if ($LASTEXITCODE -ne 0) {
+        # $? precisa ser a primeiríssima coisa lida na função: qualquer statement
+        # antes disso (mesmo uma atribuição) já o sobrescreve com "sucesso".
+        # $LASTEXITCODE sozinho não serve aqui: só reflete o código de saída de
+        # executáveis nativos, então um comando inexistente (erro do próprio
+        # PowerShell) nunca o altera. $? cobre os dois casos, como o $? do zsh.
+        $global:FaahLastCommandFailed = -not $?
+        if ($global:FaahLastCommandFailed) {
             Start-Process ffplay -ArgumentList "-nodisp -autoexit -loglevel quiet `"$global:FaahMp3`"" -WindowStyle Hidden
         }
         & $script:OmpPrompt
