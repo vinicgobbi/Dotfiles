@@ -1,0 +1,87 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "version": 3,
+  "final_space": true,
+  "console_title_template": "{{ .Shell }} in {{ .Folder }}",
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "session",
+          "style": "plain",
+          "foreground": "green",
+          "template": "{{ .UserName }}"
+        },
+        {
+          "type": "text",
+          "style": "plain",
+          "foreground": "red",
+          "template": " at "
+        },
+        {
+          "type": "session",
+          "style": "plain",
+          "foreground": "blue",
+          "foreground_templates": [
+            "{{ if .Env.WSL_DISTRO_NAME }}cyan{{ end }}",
+            "{{ if .Env.USERDNSDOMAIN }}magenta{{ end }}",
+            "blue"
+          ],
+          "template": "{{ if .Env.USERDNSDOMAIN }}{{ .Env.USERDNSDOMAIN }}{{ else }}{{ .HostName }}{{ end }}"
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "type": "path",
+          "style": "plain",
+          "foreground": "yellow",
+          "template": "{{ .Path }}",
+          "properties": {
+            "style": "full",
+            "home_icon": "~"
+          }
+        },
+        {
+          "type": "ruby",
+          "style": "plain",
+          "foreground": "red",
+          "template": " ‹{{ .Full }}›"
+        },
+        {
+          "type": "git",
+          "style": "plain",
+          "foreground": "red",
+          "template": " ‹{{ .HEAD }}›",
+          "properties": {
+            "fetch_status": false,
+            "fetch_upstream_icon": false
+          }
+        },
+        {
+          "type": "text",
+          "style": "plain",
+          "foreground": "blue",
+          "template": " >"
+        }
+      ]
+    },
+    {
+      "type": "rprompt",
+      "segments": [
+        {
+          "type": "exit",
+          "style": "plain",
+          "foreground": "red",
+          "template": "{{ .Code }} ↵"
+        }
+      ]
+    }
+  ]
+}

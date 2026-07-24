@@ -8,6 +8,7 @@ Este repositório reúne configs de terminal, shell, aplicativos e ferramentas q
 
 - `config/` — configurações de aplicativos (terminal, launcher, notificações, etc.)
 - `oh-my-zsh/custom/` — aliases, plugins e temas personalizados para o Zsh
+- `oh-my-posh/` — réplica do setup do Zsh (tema, aliases e easter egg) para PowerShell no Windows
 - `fonts/` — fontes utilizadas nas configurações
 - `Wallpapers/` — papéis de parede
 - `etc/` — arquivos de configuração diversos
