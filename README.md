@@ -12,6 +12,7 @@ Este repositório reúne configs de terminal, shell, aplicativos e ferramentas q
 - `fonts/` — fontes utilizadas nas configurações
 - `Wallpapers/` — papéis de parede
 - `etc/` — arquivos de configuração diversos
+- `bootstrap.sh` — instala os plugins do Zsh (`zsh-autosuggestions`, `zsh-syntax-highlighting`, `zoxide`) e habilita tudo no `~/.zshrc`
 
 ## Foto
 
