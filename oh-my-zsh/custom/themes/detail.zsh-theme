@@ -16,7 +16,7 @@ function get_context() {
   if command -v realm > /dev/null; then
     local ad_domain=$(realm list --name-only 2>/dev/null | head -n1)
     if [[ -n "$ad_domain" ]]; then
-      echo "%{$fg[magenta]%}$ad_domain%{$reset_color%}"
+      echo "%{$fg[magenta]%}$ad_domain%{$reset_color%} on %{$fg[blue]%}%M%{$reset_color%}"
       return
     fi
   fi
