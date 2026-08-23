@@ -1,16 +1,24 @@
 #!/usr/bin/env bash
-# Instala as dependências do tema Zsh deste repo (plugins + zoxide) e
-# habilita tudo no ~/.zshrc. Idempotente: pode rodar quantas vezes quiser.
+# Instala e configura, a partir deste repo, todo o ambiente de shell:
+# Oh My Zsh (se ausente), plugins (zsh-autosuggestions, zsh-syntax-highlighting,
+# zoxide), tema, arquivos custom do Zsh, fontes, config do Solaar e papel de
+# parede. Idempotente: pode rodar quantas vezes quiser.
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
 ZSHRC="$HOME/.zshrc"
 DESIRED_PLUGINS="plugins=(git zsh-autosuggestions zoxide zsh-syntax-highlighting)"
+DESIRED_THEME='ZSH_THEME="detail"'
 PATH_LINE='export PATH="$HOME/.local/bin:$PATH"'
+WALLPAPER="$SCRIPT_DIR/Wallpapers/jinx-arcane-season-2-4k.jpg"
 
-if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
-  echo "Oh My Zsh não encontrado em ~/.oh-my-zsh. Instale primeiro: https://ohmyz.sh" >&2
-  exit 1
+echo "==> Oh My Zsh"
+if [[ -d "$HOME/.oh-my-zsh" ]]; then
+  echo "  - já instalado, pulando"
+else
+  echo "  - instalando"
+  RUNZSH=no CHSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
 clone_plugin() {
@@ -36,6 +44,13 @@ else
   curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
 fi
 
+echo "==> Copiando arquivos deste repo para o ambiente do usuário"
+mkdir -p "$ZSH_CUSTOM" "$HOME/.local/share/fonts" "$HOME/.config/solaar"
+cp -r "$SCRIPT_DIR/oh-my-zsh/custom/"* "$ZSH_CUSTOM/" 2>/dev/null || true
+cp -r "$SCRIPT_DIR/fonts/"* "$HOME/.local/share/fonts/" 2>/dev/null || true
+cp -r "$SCRIPT_DIR/config/solaar/"* "$HOME/.config/solaar/" 2>/dev/null || true
+command -v fc-cache >/dev/null 2>&1 && fc-cache -f "$HOME/.local/share/fonts" >/dev/null
+
 echo "==> Configurando ~/.zshrc"
 if [[ ! -f "$ZSHRC" ]]; then
   echo "  - ~/.zshrc não encontrado, pulando (ajuste manualmente depois)"
@@ -50,6 +65,16 @@ else
   else
     echo "  - linha plugins=() não encontrada, adicione manualmente:"
     echo "    $DESIRED_PLUGINS"
+  fi
+
+  if grep -qF "$DESIRED_THEME" "$ZSHRC"; then
+    echo "  - tema já configurado"
+  elif grep -q '^ZSH_THEME=' "$ZSHRC"; then
+    sed -i "s/^ZSH_THEME=.*/$DESIRED_THEME/" "$ZSHRC"
+    echo "  - tema atualizado para detail"
+  else
+    echo "  - linha ZSH_THEME não encontrada, adicione manualmente:"
+    echo "    $DESIRED_THEME"
   fi
 
   if grep -qF "$PATH_LINE" "$ZSHRC"; then
@@ -71,6 +96,15 @@ $PATH_LINE" "$ZSHRC"
   else
     echo "  - backup do ~/.zshrc original salvo em $ZSHRC.bak"
   fi
+fi
+
+echo "==> Papel de parede"
+if command -v gsettings >/dev/null 2>&1 && [[ -f "$WALLPAPER" ]]; then
+  gsettings set org.gnome.desktop.background picture-uri "file://$WALLPAPER" 2>/dev/null || true
+  gsettings set org.gnome.desktop.background picture-uri-dark "file://$WALLPAPER" 2>/dev/null || true
+  echo "  - papel de parede aplicado (GNOME)"
+else
+  echo "  - gsettings indisponível (não é GNOME) ou wallpaper não encontrado, pulando"
 fi
 
 echo

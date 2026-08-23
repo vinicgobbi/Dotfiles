@@ -12,7 +12,12 @@ Este repositório reúne configs de terminal, shell, aplicativos e ferramentas q
 - `fonts/` — fontes utilizadas nas configurações
 - `Wallpapers/` — papéis de parede
 - `etc/` — arquivos de configuração diversos
-- `bootstrap.sh` — instala os plugins do Zsh (`zsh-autosuggestions`, `zsh-syntax-highlighting`, `zoxide`) e habilita tudo no `~/.zshrc`
+- `bootstrap.sh` — instala Oh My Zsh (se ausente), os plugins do Zsh
+  (`zsh-autosuggestions`, `zsh-syntax-highlighting`, `zoxide`), aplica o tema
+  e os arquivos de `oh-my-zsh/custom/`, copia fontes e a config do Solaar, e
+  define o papel de parede (GNOME). Idempotente — pode rodar quantas vezes
+  quiser. É o script usado tanto localmente quanto pelo módulo
+  `ambiente_usuario` do [post_install](https://github.com/vinicgobbi/post_install).
 
 ## Foto
 
