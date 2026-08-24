@@ -4,16 +4,16 @@
 }
 
 window {
-    /* Fundo @window_bg_color (#242424) com 90% de opacidade */
-    background-color: rgba(36, 36, 36, 0.9);
+    /* Fundo Background (#282a36) com 90% de opacidade */
+    background-color: rgba(40, 42, 54, 0.9);
 }
 
 button {
-    /* Fundo @view_bg_color (#303030) */
-    background-color: #303030;
-    
-    
-    /* Estilo Libadwaita */
+    /* Fundo Current Line / Selection (#44475a) */
+    background-color: #44475a;
+
+
+    /* Estilo Dracula */
     border: none;
     border-radius: 24px;
     outline-style: none;
@@ -25,22 +25,22 @@ button {
     background-size: 40%;
 }
 
-/* --- Ações Seguras (Acento Azul) --- */
+/* --- Ações Seguras (Acento Purple) --- */
 #lock:focus, #lock:active, #lock:hover,
 #suspend:focus, #suspend:active, #suspend:hover,
 #hibernate:focus, #hibernate:active, #hibernate:hover {
-    background-color: #3584e4; /* @accent_bg_color */
+    background-color: #bd93f9; /* Purple */
 }
 
-/* --- Ação de Aviso (Amarelo) --- */
+/* --- Ação de Aviso (Orange) --- */
 #logout:focus, #logout:active, #logout:hover {
-    background-color: #ae7b03; /* @warning_bg_color */
+    background-color: #ffb86c; /* Orange */
 }
 
-/* --- Ações Destrutivas (Vermelho) --- */
+/* --- Ações Destrutivas (Red) --- */
 #shutdown:focus, #shutdown:active, #shutdown:hover,
 #reboot:focus, #reboot:active, #reboot:hover {
-    background-color: #c01c28; /* @error_bg_color */
+    background-color: #ff5555; /* Red */
 }
 
 

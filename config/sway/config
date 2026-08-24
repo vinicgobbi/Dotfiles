@@ -1,5 +1,5 @@
 # =========================================
-# Sway config ajustado para Adwaita + libadwaita
+# Sway config ajustado para o tema Dracula
 # =========================================
 
 ### --------------------------------------
@@ -11,7 +11,7 @@ set $down j
 set $up k
 set $right l
 set $term alacritty
-set $menu fuzzel --icon-theme Yaru-blue-dark
+set $menu fuzzel --icon-theme Dracula
 set $lock swaylock
 set $printscreen flameshot gui
 
@@ -20,7 +20,9 @@ font pango:Adwaita Sans 10
 ### --------------------------------------
 ### Saídas / Monitores
 ### --------------------------------------
-output * bg /home/vinicius/Imagens/Wallpapers/jinx-arcane-season-2-4k.jpg fill
+# Papel de parede: resolvido dinamicamente via XDG Pictures dir
+# (ver config/sway/scripts/set-wallpaper.sh), em vez de caminho fixo na home
+exec_always ~/.config/sway/scripts/set-wallpaper.sh
 input * xkb_layout "br"
 input * xkb_variant "abnt2"
 
@@ -162,27 +164,27 @@ gaps outer 3
 for_window [app_id="yad"] floating enable
 for_window [app_id="nm-connection-editor"] floating enable
 
-# Cores baseadas no Libadwaita Dark (acento azul padrão @accent_bg_color)
+# Cores baseadas no Dracula (acento primário: purple #bd93f9)
 #
 # <classe>              <borda>   <fundo>   <texto>   <indicador> <borda_filho>
-client.focused          #3584e4 #3584e4 #ffffff #78aeed    #3584e4
-client.focused_inactive #242424 #242424 #dedede #242424    #242424
-client.unfocused        #303030 #303030 #dedede #303030    #303030
-client.urgent           #c01c28 #c01c28 #ffffff #ff7b63    #c01c28
-client.placeholder      #303030 #303030 #dedede #303030    #303030
+client.focused          #bd93f9 #bd93f9 #f8f8f2 #8be9fd    #bd93f9
+client.focused_inactive #282a36 #282a36 #6272a4 #282a36    #282a36
+client.unfocused        #44475a #44475a #6272a4 #44475a    #44475a
+client.urgent           #ff5555 #ff5555 #f8f8f2 #ff6e6e    #ff5555
+client.placeholder      #44475a #44475a #6272a4 #44475a    #44475a
 
-# Cor de fundo do Sway (atrás das janelas) - @window_bg_color
-client.background       #242424
+# Cor de fundo do Sway (atrás das janelas) - background
+client.background       #282a36
 
 ### --------------------------------------
 ### Ajustes de Tema GTK / Icones / Cursor
 ### --------------------------------------
 # GTK theme
-exec gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3-dark'
+exec gsettings set org.gnome.desktop.interface gtk-theme 'Dracula'
 # Icon theme
-exec gsettings set org.gnome.desktop.interface icon-theme 'Yaru-blue-dark'
+exec gsettings set org.gnome.desktop.interface icon-theme 'Dracula'
 # Cursor theme
-exec gsettings set org.gnome.desktop.interface cursor-theme 'Yaru'
+exec gsettings set org.gnome.desktop.interface cursor-theme 'Dracula-cursors'
 
 ### --------------------------------------
 ### Autostart de Aplicativos
@@ -190,6 +192,8 @@ exec gsettings set org.gnome.desktop.interface cursor-theme 'Yaru'
 exec autotiling-rs
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec gnome-keyring-daemon
+exec dunst
+exec solaar -w hide
 
 # <-- ADICIONADO: Configuração de bloqueio automático (idle) -->
 # (Certifique-se de ter o 'swayidle' instalado: ex: sudo pacman -S swayidle)

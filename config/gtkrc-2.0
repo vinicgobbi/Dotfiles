@@ -1,0 +1,10 @@
+# ==================================
+# GTK2 - Tema Dracula
+# ==================================
+# GTK2 não lê gsettings; apps GTK2 (ex: alguns diálogos legados) usam este
+# arquivo diretamente. Copiado para ~/.gtkrc-2.0 pelo install-sway.sh.
+
+gtk-theme-name="Dracula"
+gtk-icon-theme-name="Dracula"
+gtk-cursor-theme-name="Dracula-cursors"
+gtk-font-name="Adwaita Sans 10"

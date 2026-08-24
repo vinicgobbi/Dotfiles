@@ -1,4 +1,4 @@
-## Configuration file for CAVA - Libadwaita Dark Theme
+## Configuration file for CAVA - Dracula Theme
 # Remove the ; to change parameters.
 
 
@@ -46,23 +46,23 @@ channels = stereo
 
 [color]
 
-# --- Tema Libadwaita Dark ---
+# --- Tema Dracula ---
 
-# Cor de fundo oficial: @window_bg_color
-background = '#242424'
+# Cor de fundo oficial: Background
+background = '#282a36'
 
 # Ativa o modo gradiente
 gradient = 1
 
-# Gradiente que vai do Azul (acento) ao Branco (texto)
-gradient_color_1 = '#3584e4' # @accent_bg_color
-gradient_color_2 = '#3584e4'
-gradient_color_3 = '#78aeed' # @accent_fg_color
-gradient_color_4 = '#78aeed'
-gradient_color_5 = '#dedede' # @inactive_fg_color
-gradient_color_6 = '#dedede'
-gradient_color_7 = '#ffffff' # @window_fg_color
-gradient_color_8 = '#ffffff'
+# Gradiente que vai do Purple (acento) ao Foreground (texto)
+gradient_color_1 = '#bd93f9' # Purple
+gradient_color_2 = '#bd93f9'
+gradient_color_3 = '#8be9fd' # Cyan
+gradient_color_4 = '#8be9fd'
+gradient_color_5 = '#6272a4' # Comment
+gradient_color_6 = '#6272a4'
+gradient_color_7 = '#f8f8f2' # Foreground
+gradient_color_8 = '#f8f8f2'
 
 
 [smoothing]

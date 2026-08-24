@@ -1,7 +1,7 @@
 # User: Franklin Souza
 # Telegram: FranklinTech
-# 
-# Configuração do Dunst com tema Libadwaita Dark
+#
+# Configuração do Dunst com tema Dracula
 #
 
 [global]
@@ -151,10 +151,10 @@
     #   <u>underline</u>
     #
     
-    # --- Cores do Libadwaita Dark aplicadas ao formato ---
-    # Sumário (%s): Azul claro de acento (@accent_fg_color)
-    # Corpo (%b)  : Branco (@window_fg_color)
-    format = "<span foreground='#78aeed' font='Hack Nerd Font 9'>%s</span>\n<span foreground='#ffffff' font='Hack Nerd Font 9'>%b</span>"
+    # --- Cores do Dracula aplicadas ao formato ---
+    # Sumário (%s): Cyan (acento claro)
+    # Corpo (%b)  : Foreground
+    format = "<span foreground='#8be9fd' font='Hack Nerd Font 9'>%s</span>\n<span foreground='#f8f8f2' font='Hack Nerd Font 9'>%b</span>"
 
     # Alignment of message text.
     # Possible values are "left", "center" and "right".
@@ -212,7 +212,7 @@
     dmenu = /usr/bin/dmenu -p dunst:
 
     # Browser for opening urls in context menu.
-    browser = /usr/bin/qutebrowser -C /home/frank/.config/qutebrowser/config.py
+    browser = xdg-open
 
     # Always run rule-defined scripts, even if the notification is suppressed
     always_run_script = true
@@ -251,7 +251,7 @@
     # Use the Xinerama extension instead of RandR for multi-monitor support.
     # This setting is provided for compatibility with older nVidia drivers that
     # do not support RandR and using it on systems that support RandR is highly
-    * discouraged.
+    # discouraged.
     #
     # By enabling this setting dunst will not be able to detect when a monitor
     # is connected or disconnected which might break follow mode if the screen
@@ -306,30 +306,30 @@
 
 
 # ==================================
-# Seções de cores - Libadwaita Dark
+# Seções de cores - Dracula
 # ==================================
 #
-# Fundo: @view_bg_color (#303030)
+# Fundo: Current Line / Selection (#44475a)
 #
-# Borda (Low):    @success_bg_color (#26a269)
-# Borda (Normal): @accent_bg_color  (#3584e4)
-# Borda (Crit):   @error_bg_color   (#c01c28)
+# Borda (Low):    Green   (#50fa7b)
+# Borda (Normal): Purple  (#bd93f9)
+# Borda (Crit):   Red     (#ff5555)
 #
 
 [base16_low]
     msg_urgency = low
-    frame_color = "#26a269"
-    background = "#303030"
+    frame_color = "#50fa7b"
+    background = "#44475a"
     # foreground é controlado pelo 'format' global
 
 [base16_normal]
     msg_urgency = normal
-    frame_color = "#3584e4"
-    background = "#303030"
+    frame_color = "#bd93f9"
+    background = "#44475a"
     # foreground é controlado pelo 'format' global
 
 [base16_critical]
     msg_urgency = critical
-    frame_color = "#c01c28"
-    background = "#303030"
+    frame_color = "#ff5555"
+    background = "#44475a"
     # foreground é controlado pelo 'format' global

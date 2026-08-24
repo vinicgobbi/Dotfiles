@@ -1,5 +1,5 @@
 # ==================================
-# Config do Swaylock - Libadwaita Dark
+# Config do Swaylock - Dracula
 # ==================================
 
 # --- Efeitos e Comportamento (Mantidos) ---
@@ -24,58 +24,58 @@ ignore-empty-password
 font="Adwaita Sans"
 
 # --- Cor de Fundo (Fallback) ---
-# @window_bg_color
-color=242424
+# Background
+color=282a36
 
 # --- Cores do Indicador (Padrão) ---
-# @window_bg_color
-line-color=242424
-# @accent_bg_color (azul)
-ring-color=3584e4
-# @view_bg_color (cinza interno)
-inside-color=303030
+# Background
+line-color=282a36
+# Purple (acento)
+ring-color=bd93f9
+# Current Line / Selection (cinza interno)
+inside-color=44475a
 
 # --- Cores do Texto (Padrão) ---
-# @window_fg_color (branco)
-text-color=ffffff
-# @warning_fg_color (amarelo)
-text-caps-lock-color=f8e45c
+# Foreground (branco)
+text-color=f8f8f2
+# Yellow
+text-caps-lock-color=f1fa8c
 
 # --- Destaque de Tecla ---
-# @success_fg_color (verde claro)
-key-hl-color=8ff0a4
+# Green
+key-hl-color=50fa7b
 
 # --- Separador ---
 separator-color=00000000
 
 # --- Cores de Verificação (Digitando) ---
-# @accent_bg_color (azul)
-line-ver-color=3584e4
-# @accent_bg_color (azul)
-ring-ver-color=3584e4
-# @view_bg_color (cinza interno)
-inside-ver-color=303030
-# @accent_fg_color (azul claro)
-text-ver-color=78aeed
+# Purple (acento)
+line-ver-color=bd93f9
+# Purple (acento)
+ring-ver-color=bd93f9
+# Current Line / Selection (cinza interno)
+inside-ver-color=44475a
+# Cyan (acento claro)
+text-ver-color=8be9fd
 
 # --- Cores de Erro (Senha Errada) ---
-# @error_bg_color (vermelho)
-line-wrong-color=c01c28
-# @error_bg_color (vermelho)
-ring-wrong-color=c01c28
-# @view_bg_color (cinza interno)
-inside-wrong-color=303030
-# @error_fg_color (vermelho claro)
-text-wrong-color=ff7b63
+# Red
+line-wrong-color=ff5555
+# Red
+ring-wrong-color=ff5555
+# Current Line / Selection (cinza interno)
+inside-wrong-color=44475a
+# Red claro
+text-wrong-color=ff6e6e
 
 # --- Cores de Limpeza (Backspace) ---
-# @accent_fg_color (azul claro)
-line-clear-color=78aeed
-# @accent_fg_color (azul claro)
-ring-clear-color=78aeed
-# @view_bg_color (cinza interno)
-inside-clear-color=303030
-# @accent_fg_color (azul claro)
-text-clear-color=78aeed
-# @accent_fg_color (azul claro)
-bs-hl-color=78aeed
+# Cyan (acento claro)
+line-clear-color=8be9fd
+# Cyan (acento claro)
+ring-clear-color=8be9fd
+# Current Line / Selection (cinza interno)
+inside-clear-color=44475a
+# Cyan (acento claro)
+text-clear-color=8be9fd
+# Cyan (acento claro)
+bs-hl-color=8be9fd

@@ -1,38 +1,36 @@
 /*
  ********************************************
- * Waybar CSS para Adwaita Sans + libadwaita *
+ * Waybar CSS para Adwaita Sans + tema Dracula *
  ********************************************
  */
 
-/* ----- Variáveis de Cor (Libadwaita Dark) ----- */
-@define-color window_bg_color #242424; /* Fundo principal */
-@define-color window_fg_color #ffffff; /* Texto principal (branco) */
-@define-color view_bg_color   #303030; /* Fundo de "conteúdo" (ex: módulo de workspaces) */
-@define-color inactive_fg_color #dedede;/* Cor de texto inativo/secundário */
+/* ----- Variáveis de Cor (Dracula) ----- */
+@define-color window_bg_color #282a36; /* Fundo principal (Background) */
+@define-color window_fg_color #f8f8f2; /* Texto principal (Foreground) */
+@define-color view_bg_color   #44475a; /* Fundo de "conteúdo" (Current Line / Selection) */
+@define-color inactive_fg_color #6272a4;/* Cor de texto inativo/secundário (Comment) */
 
-/* * Acento Azul (Padrão Libadwaita)
- * Como seu tema de ícones no Sway é "Yaru-magenta-dark",
- * você pode trocar o azul por roxo comentando as linhas abaixo
- * e descomentando as linhas do "Acento Magenta".
- */
-@define-color accent_bg_color #3584e4; /* @accent_bg_color (Azul) */
-@define-color accent_fg_color #78aeed; /* @accent_fg_color (Azul claro - para texto/ícones SEM fundo) */
+/* Acento primário: Purple, com Cyan como acento claro */
+@define-color accent_bg_color #bd93f9; /* Purple */
+@define-color accent_fg_color #8be9fd; /* Cyan (para texto/ícones SEM fundo) */
 
-/* Acento Magenta (para combinar com Yaru-magenta-dark) */
-/*
-@define-color accent_bg_color #9141ac;
-@define-color accent_fg_color #ab6bc6;
-*/
+/* Cores de Alerta/Erro (Red) */
+@define-color error_bg_color  #ff5555;
+@define-color error_fg_color  #ff6e6e;
 
-/* Cores de Alerta/Erro */
-@define-color error_bg_color  #c01c28; /* @error_bg_color (Vermelho) */
-@define-color error_fg_color  #ff7b63; /* @error_fg_color (Vermelho claro) */
+/* Verde, usado no indicador de VPN conectada */
+@define-color success_fg_color #50fa7b;
 
 
 /* ----- Configuração Geral ----- */
 * {
     border: none;
     border-radius: 0;
+    /* Só Adwaita Sans aqui. A Nerd Font Mono é aplicada explicitamente via
+       font_family dentro do <span> de cada ícone (config/waybar/config) -
+       colocá-la aqui como fallback geral faria QUALQUER caractere ausente
+       na Adwaita Sans (ex: "◉" em vez de "●") cair nela sem querer,
+       renderizando em tamanho/peso diferente do resto do texto. */
     font-family: "Adwaita Sans";
     font-weight: 400; /* Regular */
     font-size: 14px;
@@ -156,4 +154,13 @@ window#waybar.hidden {
 #custom-media.custom-mediaplayer-chromium {
     background: @window_bg_color;
     color: @window_fg_color;
+}
+
+/* ---------------------- VPN (ícone único, cor indica o estado) ---------------------- */
+#custom-vpn.active {
+    color: @success_fg_color; /* Green: VPN conectada */
+}
+
+#custom-vpn.inactive {
+    color: @error_fg_color; /* Red: VPN desconectada */
 }

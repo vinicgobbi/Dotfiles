@@ -6,7 +6,11 @@ Este repositório reúne configs de terminal, shell, aplicativos e ferramentas q
 
 ## Estrutura
 
-- `config/` — configurações de aplicativos (terminal, launcher, notificações, etc.)
+- `config/` — configurações ativas dos apps do dia a dia (sway, waybar,
+  swaylock, alacritty, fuzzel, wlogout, dunst, cava, flameshot, nwg-look,
+  solaar)
+- `legacy/` — setups antigos mantidos só como referência (i3 + polybar,
+  tema pywal/xrdb), não usados nem instalados por nenhum script deste repo
 - `oh-my-zsh/custom/` — aliases, plugins e temas personalizados para o Zsh
 - `oh-my-posh/` — réplica do setup do Zsh (tema, aliases e easter egg) para PowerShell no Windows
 - `fonts/` — fontes utilizadas nas configurações
@@ -18,6 +22,23 @@ Este repositório reúne configs de terminal, shell, aplicativos e ferramentas q
   define o papel de parede (GNOME). Idempotente — pode rodar quantas vezes
   quiser. É o script usado tanto localmente quanto pelo módulo
   `ambiente_usuario` do [post_install](https://github.com/vinicgobbi/post_install).
+- `install-sway.sh` — instala o Sway e todo o ecossistema (waybar, swaylock,
+  fuzzel, wlogout, dunst, cava, flameshot) e copia as respectivas configs
+  para `~/.config`, resolvendo caminhos como o wallpaper e o savePath do
+  flameshot via XDG (`xdg-user-dirs`) em vez de caminho fixo na home.
+  Idempotente.
+- `post-install.sh` — post-install completo para Arch Linux, baseado no
+  projeto [post_install](https://github.com/vinicgobbi/post_install) porém
+  via `pacman`/AUR (`yay`): mirrors, atualização do sistema, Docker, PHP +
+  ferramental de SQL Server, Solaar, Flatpaks, Tailscale, Chrome + Git
+  Credential Manager, Bitwarden, todo o Sway (chama `install-sway.sh`), o
+  ambiente do usuário (chama `bootstrap.sh`), Rust tools, Claude Code,
+  extensão do VSCode no Nautilus, perfis OpenVPN (`.ovpn` em `OVPN/`) e
+  virt-manager. Não instala jogos (Steam/Heroic/ProtonPlus/PrismLauncher) de
+  propósito. Idempotente — pode rodar sozinho ou como próximo passo depois
+  do `install-sway.sh`.
+- `OVPN/` — perfis `.ovpn` a importar pelo `post-install.sh` (não
+  versionados, veja `OVPN/README.md`)
 
 ## Foto
 

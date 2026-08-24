@@ -21,51 +21,55 @@
 		"custom/power"
 	],
 	"pulseaudio": {
-		"format": "{icon} {volume}%",
+		"format": "<span size='135%' font_family='FiraCode Nerd Font Mono'>{icon}</span> {volume}%",
 		"on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
 		"on-click-right": "pavucontrol",
-		"format-muted": "🔇 {volume}%",
+		"format-muted": "<span size='135%' font_family='FiraCode Nerd Font Mono'></span> {volume}%",
 		"format-icons": {
-			"default": "🔊"
+			"default": ""
 		}
 	},
 	"battery": {
-		"format": "🔋 {capacity}%",
-		"format-icons": {
-			"default": "🔋"
-		}
+		"format": "<span size='135%' font_family='FiraCode Nerd Font Mono'>{icon}</span> {capacity}%",
+		"format-icons": [
+			"",
+			"",
+			"",
+			"",
+			""
+		]
 	},
 	"backlight": {
-		"format": "💡 {percent}%",
+		"format": "<span size='135%' font_family='FiraCode Nerd Font Mono'>{icon}</span> {percent}%",
 		"format-icons": {
-			"default": "💡"
+			"default": ""
 		}
 	},
 	"clock": {
-		"format": "🕒 {:%R}",
-		"format-alt": "📅 {:%R - %A - %d/%m/%y}",
+		"format": "<span size='135%' font_family='FiraCode Nerd Font Mono'></span> {:%R}",
+		"format-alt": "<span size='135%' font_family='FiraCode Nerd Font Mono'></span> {:%R - %A - %d/%m/%y}",
 		"tooltip": true,
 		"tooltip-format": "{:%R - %A - %d/%m/%y}"
 	},
 	"custom/media": {
-		"format": "{icon} {text}",
+		"format": "<span size='135%' font_family='FiraCode Nerd Font Mono'>{icon}</span> {text}",
 		"return-type": "json",
 		"max-length": 50,
 		"escape": true,
 		"format-icons": {
-			"spotify": "🎵",
-			"cmus": "🎵",
-			"firefox": "🌐",
-			"chromium": "🌐",
-			"paused": "⏸️",
-			"default": "▶️"
+			"spotify": "",
+			"cmus": "",
+			"firefox": "",
+			"chromium": "",
+			"paused": "",
+			"default": ""
 		},
 		"exec": "/home/vinicius/.config/waybar/scripts/mediaplayer.py 2> /dev/null"
 	},
 	"sway/workspaces": {
 		"format": "{icon} {name}",
 		"format-icons": {
-			"focused": "◉",
+			"focused": "●",
 			"default": "○"
 		}
 	},
@@ -76,59 +80,55 @@
 	"custom/vpn": {
 		"exec": "/home/vinicius/.config/waybar/scripts/vpn_toggle.py",
 		"return-type": "json",
-		"format": "{icon} {text}",
+		"format": "<span size='135%' font_family='FiraCode Nerd Font Mono'>{icon}</span> {text}",
 		"on-click": "/home/vinicius/.config/waybar/scripts/vpn_toggle.py --toggle",
 		"format-icons": {
-			"active": "🛡️🟢",
-			"inactive": "🛡️🔴",
-			"default": "❔"
+			"default": ""
 		}
 	},
 	"custom/power": {
 		"return-type": "json",
-		"format": "{icon}",
+		"format": "<span size='135%' font_family='FiraCode Nerd Font Mono'>{icon}</span>",
 		"on-click": "wlogout",
 		"format-icons": {
-			"default": "🔌"
+			"default": ""
 		}
 	},
 	"keyboard-state": {
 		"numlock": true,
 		"capslock": true,
-		"format": "{name} {icon}",
+		"format": "{name} <span size='135%' font_family='FiraCode Nerd Font Mono'>{icon}</span> ",
 		"format-icons": {
-			"locked": "🔒",
-			"unlocked": "🔑"
-		},
-		"tooltip": true,
-		"tooltip-format": "{name}: {state}"
+			"locked": "",
+			"unlocked": ""
+		}
 	},
 	"network": {
-		"format-wifi": "📡 {essid}",
+		"format-wifi": "<span size='135%' font_family='FiraCode Nerd Font Mono'></span> {essid}",
 		"tooltip-format": "{ifname} via {gwaddr} ⦙ IP: {ipaddr}/{cidr}",
-		"format-ethernet": "🌐 {ifname}",
-		"format-disconnected": "❌ Disconnected",
+		"format-ethernet": "<span size='135%' font_family='FiraCode Nerd Font Mono'></span> {ifname}",
+		"format-disconnected": "<span size='135%' font_family='FiraCode Nerd Font Mono'></span> Disconnected",
 		"on-click": "nm-connection-editor"
 	},
 	"bluetooth": {
-		"format": "🔗 {status}",
-		"format-connected": "🎧 {device_alias}",
-		"format-connected-battery": "🎧 {device_alias} ({device_battery}%)",
-		"format-disabled": "🚫 Off",
-		"format-off": "🚫 Off",
-		"format-on": "🔗 On",
+		"format": "<span size='135%' font_family='FiraCode Nerd Font Mono'></span> {status}",
+		"format-connected": "<span size='135%' font_family='FiraCode Nerd Font Mono'></span> {device_alias}",
+		"format-connected-battery": "<span size='135%' font_family='FiraCode Nerd Font Mono'></span> {device_alias} ({device_battery_percentage}%)",
+		"format-disabled": "<span size='135%' font_family='FiraCode Nerd Font Mono'></span> Off",
+		"format-off": "<span size='135%' font_family='FiraCode Nerd Font Mono'></span> Off",
+		"format-on": "<span size='135%' font_family='FiraCode Nerd Font Mono'></span> On",
 		"tooltip-format": "{controller_alias}\n{controller_address}\nStatus: {status}",
 		"on-click": "blueman-manager",
 		"on-click-right": "rfkill toggle bluetooth"
 	},
 	"power-profiles-daemon": {
-		"format": "{icon} {profile}",
+		"format": "<span size='135%' font_family='FiraCode Nerd Font Mono'>{icon}</span> {profile}",
 		"format-icons": {
-			"performance": "🚀",
-			"balanced": "⚙️",
-			"power-saver": "🪫"
+			"performance": "",
+			"balanced": "",
+			"power-saver": ""
 		},
 		"tooltip-format": "Modo atual: {profile}\nDriver: {driver}",
-		"on-click": "~/.config/waybar/scripts/power-toggle.sh"
+		"on-click": "/home/vinicius/.config/waybar/scripts/power-toggle.sh"
 	}
 }

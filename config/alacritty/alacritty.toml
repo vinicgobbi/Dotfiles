@@ -1,5 +1,5 @@
 # ==========================
-# Alacritty config - Libadwaita Dark (Oficial)
+# Alacritty config - Dracula (Oficial)
 # ==========================
 
 ###########
@@ -54,49 +54,49 @@ size = 12.0
 
 #########
 # COLORS #
-# Paleta baseada na documentação oficial do Libadwaita Dark
-# https://gnome.pages.gitlab.gnome.org/libadwaita/doc/1.5/named-colors.html
+# Paleta oficial Dracula (dracula/alacritty)
+# https://draculatheme.com/alacritty
 #########
 
 [colors]
 # Cores primárias
-primary = { foreground = "#ffffff", background = "#242424" } # @window_fg_color / @window_bg_color
+primary = { foreground = "#f8f8f2", background = "#282a36" } # Foreground / Background
 
 # Cores do cursor
-cursor = { text = "#242424", cursor = "#ffffff" }
-vi_mode_cursor = { text = "#242424", cursor = "#ffffff" }
+cursor = { text = "#282a36", cursor = "#f8f8f2" }
+vi_mode_cursor = { text = "#282a36", cursor = "#f8f8f2" }
 
 # Cores normais (ANSI)
 [colors.normal]
-black   = "#303030" # @content_bg_color
-red     = "#c01c28" # @error_bg_color
-green   = "#26a269" # @success_bg_color
-yellow  = "#ae7b03" # @warning_bg_color
-blue    = "#3584e4" # @accent_bg_color
-magenta = "#9141ac" # @purple_3
-cyan    = "#2ec27e" # @teal_3
-white   = "#dedede" # @light_4 (para contraste suave)
+black   = "#21222c"
+red     = "#ff5555"
+green   = "#50fa7b"
+yellow  = "#f1fa8c"
+blue    = "#bd93f9"
+magenta = "#ff79c6"
+cyan    = "#8be9fd"
+white   = "#f8f8f2"
 
 # Cores brilhantes (ANSI)
 [colors.bright]
-black   = "#636363" # @dark_4
-red     = "#ff7b63" # @error_fg_color
-green   = "#8ff0a4" # @success_fg_color
-yellow  = "#f8e45c" # @warning_fg_color
-blue    = "#78aeed" # @accent_fg_color
-magenta = "#ab6bc6" # @purple_2
-cyan    = "#67d9a1" # @teal_2
-white   = "#ffffff" # @window_fg_color
+black   = "#6272a4"
+red     = "#ff6e6e"
+green   = "#69ff94"
+yellow  = "#ffffa5"
+blue    = "#d6acff"
+magenta = "#ff92df"
+cyan    = "#a4ffff"
+white   = "#ffffff"
 
-# Cores de busca (Mapeadas para cores do Libadwaita)
+# Cores de busca (Mapeadas para cores do Dracula)
 [colors.search]
-matches = { foreground = "#242424", background = "#f8e45c" } # Fundo: @warning_fg_color
-focused_match = { foreground = "#242424", background = "#78aeed" } # Fundo: @accent_fg_color
+matches = { foreground = "#282a36", background = "#f1fa8c" } # Fundo: Yellow
+focused_match = { foreground = "#282a36", background = "#8be9fd" } # Fundo: Cyan
 
-# Cores de hints (Mapeadas para cores do Libadwaita)
+# Cores de hints (Mapeadas para cores do Dracula)
 [colors.hints]
-start = { foreground = "#242424", background = "#78aeed" } # Fundo: @accent_fg_color
-end = { foreground = "#242424", background = "#ff7b63" } # Fundo: @error_fg_color
+start = { foreground = "#282a36", background = "#8be9fd" } # Fundo: Cyan
+end = { foreground = "#282a36", background = "#ff6e6e" } # Fundo: Red claro
 
 ########
 # CURSOR #
@@ -155,7 +155,7 @@ bindings = []
 [bell]
 animation = "Linear"
 duration = 0
-color = "#ffffff"
+color = "#f8f8f2"
 command = "None"
 
 ########
