@@ -14,7 +14,7 @@
 		"keyboard-state",
 		"pulseaudio",
 		"backlight",
-		"battery",
+		"custom/battery",
 		"power-profiles-daemon",
 		"clock",
 		"tray",
@@ -29,15 +29,9 @@
 			"default": ""
 		}
 	},
-	"battery": {
-		"format": "<span size='135%' font_family='FiraCode Nerd Font Mono'>{icon}</span> {capacity}%",
-		"format-icons": [
-			"",
-			"",
-			"",
-			"",
-			""
-		]
+	"custom/battery": {
+		"exec": "/home/vinicius/.config/waybar/scripts/battery_monitor.py",
+		"return-type": "json"
 	},
 	"backlight": {
 		"format": "<span size='135%' font_family='FiraCode Nerd Font Mono'>{icon}</span> {percent}%",

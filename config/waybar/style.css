@@ -92,7 +92,7 @@ window#waybar.hidden {
 }
 
 /* ---------------------- Módulos Padrão ---------------------- */
-#battery,
+#custom-battery,
 #backlight,
 #pulseaudio,
 #clock,
