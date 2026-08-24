@@ -102,7 +102,6 @@ window#waybar.hidden {
 #network,
 #bluetooth,
 #power-profiles-daemon,
-#keyboard-state,
 #custom-power {
     margin-top: 8px;
     margin-left: 8px;
@@ -117,6 +116,30 @@ window#waybar.hidden {
 
 #custom-power {
 	margin-right: 12px;
+}
+
+/* ---------------------- Keyboard State (só aparece quando ativo) ---------------------- */
+/* #keyboard-state não tem pill própria: cada label (capslock/numlock) vira sua
+   própria pill, e só quando destravado (sem .locked) fica com tamanho zero -
+   assim o módulo inteiro some quando nada está ativo, em vez de sobrar um
+   fundo vazio. */
+#keyboard-state label:not(.locked) {
+    font-size: 0;
+    padding: 0;
+    margin: 0;
+}
+
+#keyboard-state label.locked {
+    margin-top: 8px;
+    margin-left: 8px;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin-bottom: 0;
+    border-radius: 26px;
+    background: @window_bg_color;
+    color: @window_fg_color;
+    font-size: 14px;
+    transition: none;
 }
 
 /* ---------------------- Tray ---------------------- */
