@@ -185,6 +185,9 @@ exec gsettings set org.gnome.desktop.interface gtk-theme 'Dracula'
 exec gsettings set org.gnome.desktop.interface icon-theme 'Dracula'
 # Cursor theme
 exec gsettings set org.gnome.desktop.interface cursor-theme 'Dracula-cursors'
+# gsettings só cobre apps GTK; sem isso o cursor do proprio compositor
+# (XWayland, resize/drag, etc.) continua no tema padrao.
+seat seat0 xcursor_theme Dracula-cursors 24
 
 ### --------------------------------------
 ### Autostart de Aplicativos
