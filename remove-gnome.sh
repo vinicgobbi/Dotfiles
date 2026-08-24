@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # Remove o GNOME e os resíduos dele que não são usados pela config deste
-# repo (config/sway, config/swaylock, install-sway.sh) no Arch Linux. Só
+# repo (config/sway, config/swaylock, install-sway.sh) no Arch Linux, mas
+# mantém nautilus, gvfs* e gnome-keyring, que continuam em uso fora do
+# GNOME. Só
 # age se detectar que a sessão atual já é o Sway, pra nunca remover o
 # GNOME enquanto ele ainda está em uso. Pede confirmação antes de mexer em
 # qualquer pacote.
@@ -31,6 +33,14 @@ fi
 KEEP_PKGS=(
   gnome-keyring             # exec gnome-keyring-daemon na config do sway
   gsettings-desktop-schemas # schema org.gnome.desktop.interface (gsettings set ... na config)
+  nautilus                  # gerenciador de arquivos usado fora do GNOME
+  xdg-user-dirs-gtk
+)
+
+# Padrões de pacotes mantidos por prefixo (ex: todos os backends gvfs,
+# necessários pro nautilus montar dispositivos/rede)
+KEEP_PATTERNS=(
+  'gvfs*'
 )
 
 echo "==> Procurando pacotes do GNOME instalados (grupos gnome/gnome-extra)"
@@ -47,17 +57,22 @@ for pkg in "${GROUP_PKGS[@]}"; do
   for k in "${KEEP_PKGS[@]}"; do
     [[ "$pkg" == "$k" ]] && keep=true && break
   done
+  if ! "$keep"; then
+    for p in "${KEEP_PATTERNS[@]}"; do
+      [[ "$pkg" == $p ]] && keep=true && break
+    done
+  fi
   "$keep" || REMOVE_PKGS+=("$pkg")
 done
 
 if [[ ${#REMOVE_PKGS[@]} -eq 0 ]]; then
-  echo "  - só pacotes usados pela config do Sway estão instalados (${KEEP_PKGS[*]}), nada a remover"
+  echo "  - só pacotes usados pela config do Sway estão instalados (${KEEP_PKGS[*]}, ${KEEP_PATTERNS[*]}), nada a remover"
   exit 0
 fi
 
 echo "  - candidatos à remoção (${#REMOVE_PKGS[@]}):"
 printf '      %s\n' "${REMOVE_PKGS[@]}"
-echo "  - mantidos por serem usados pela config do Sway: ${KEEP_PKGS[*]}"
+echo "  - mantidos por serem usados pela config do Sway: ${KEEP_PKGS[*]}, ${KEEP_PATTERNS[*]}"
 
 GDM_ENABLED=false
 if printf '%s\n' "${REMOVE_PKGS[@]}" | grep -qx gdm && systemctl is-enabled gdm.service >/dev/null 2>&1; then
