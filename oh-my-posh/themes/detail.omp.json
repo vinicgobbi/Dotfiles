@@ -29,7 +29,7 @@
             "{{ if .Env.USERDNSDOMAIN }}magenta{{ end }}",
             "blue"
           ],
-          "template": "{{ if .Env.USERDNSDOMAIN }}{{ .Env.USERDNSDOMAIN }}{{ else }}{{ .HostName }}{{ end }}"
+          "template": "{{ if .Env.USERDNSDOMAIN }}{{ .Env.USERDNSDOMAIN }} on {{ .HostName }}{{ else }}{{ .HostName }}{{ end }}"
         }
       ]
     },

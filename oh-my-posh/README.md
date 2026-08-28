@@ -6,8 +6,8 @@ Réplica do setup do [`oh-my-zsh/custom/`](../oh-my-zsh/custom/) para PowerShell
 
 - `themes/detail.omp.json` — porte do tema `detail.zsh-theme`
 - `aliases.ps1` — porte de `custom/aliases.zsh`
-- `profile.ps1` — snippet para o `$PROFILE`, carrega tema + aliases + easter egg
-- `faaah.mp3` — som do easter egg (mesmo arquivo de `custom/faah.zsh`)
+- `editor.ps1` — porte de `custom/editor.zsh`
+- `profile.ps1` — snippet para o `$PROFILE`, carrega tema + aliases + editor
 
 ## Instalação
 
@@ -38,8 +38,8 @@ A função `get_context` do tema original detecta 3 cenários que não têm equi
 - **Domínio AD via `realm`** → no Windows o equivalente nativo é a variável `$env:USERDNSDOMAIN`, setada automaticamente quando a máquina está em um domínio Active Directory (magenta, igual ao original) — testado nesta máquina e funcionou
 - **Hostname puro** → fallback padrão (azul, igual ao original)
 
-O `faah.zsh` (toca som em erro) não tem equivalente nativo em oh-my-posh, que é só um motor de prompt, não um framework de shell como o zsh. Foi portado manualmente em `profile.ps1`, envolvendo a função `prompt` que o oh-my-posh define, e depende de `ffplay` (do FFmpeg) estar no `PATH` — assim como o original também depende de `ffplay`.
-
 `rehash.zsh` (completions do zsh) e `sshaskpass.zsh` (askpass do `ssh-agent` via `ksshaskpass`) não foram portados: são específicos de mecanismos do zsh/Linux sem equivalente direto e razoável no PowerShell.
 
-Os aliases de `cat`→`bat` e `ls`/`tree`→`eza` foram portados como funções em `aliases.ps1`, com a mesma checagem condicional (só ativa se a ferramenta existir no `PATH`).
+Os aliases de `cat`→`bat` e `ls`/`tree`→`eza` foram portados como funções em `aliases.ps1`, com a mesma checagem condicional (só ativa se a ferramenta existir no `PATH`). `cls` não precisa de porte: já é alias nativo do PowerShell para `Clear-Host`. O alias `vencord` (instala o Vencord num Discord vanilla via `curl | sh`) também não foi portado: no Windows o Vencord já vem embutido no Vesktop instalado pelo `post_windows` — não existe um Discord "vanilla" pra remendar.
+
+O easter egg de som em erro (`faah.zsh`/`faaah.mp3`) existiu nos dois lados, mas foi removido do oh-my-zsh — por consequência, também foi removido daqui para manter os dois em paridade.

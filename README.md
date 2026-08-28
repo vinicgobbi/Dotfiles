@@ -12,7 +12,7 @@ Este repositório reúne configs de terminal, shell, aplicativos e ferramentas q
 - `legacy/` — setups antigos mantidos só como referência (i3 + polybar,
   tema pywal/xrdb), não usados nem instalados por nenhum script deste repo
 - `oh-my-zsh/custom/` — aliases, plugins e temas personalizados para o Zsh
-- `oh-my-posh/` — réplica do setup do Zsh (tema, aliases e easter egg) para PowerShell no Windows
+- `oh-my-posh/` — réplica do setup do Zsh (tema, aliases e editor padrão) para PowerShell no Windows
 - `fonts/` — fontes utilizadas nas configurações
 - `Wallpapers/` — papéis de parede
 - `etc/` — arquivos de configuração diversos
